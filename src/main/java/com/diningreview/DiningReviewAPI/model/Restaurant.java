@@ -1,4 +1,5 @@
 package com.diningreview.DiningReviewAPI.model;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,13 +17,17 @@ public class Restaurant {
     @Id
     @GeneratedValue
     private Long id;
-    String name;
-    String address;
-    Integer phoneNumber;
-    double reviewScore;
-    double peanut;
-    double egg;
-    double dairy;
+    private String name;
+    private String line1;
+    private String city;
+    private String state;
+    private String zipCode;
+    private Integer phoneNumber;
+    // We will need to use Integer.toString()
+    private double reviewAvgScore;
+    private double peanutScore;
+    private double eggScore;
+    private double dairyScore;
 
 
 }

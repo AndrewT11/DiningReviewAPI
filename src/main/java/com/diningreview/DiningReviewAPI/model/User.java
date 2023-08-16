@@ -19,6 +19,8 @@ public class User {
     long id;
     @Column
     String userName;
-    @Column
-    String rating;
+
+    public void rateRestaurant(Restaurant restaurant) {
+
+    }
 }
