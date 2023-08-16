@@ -16,11 +16,16 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue
-    long id;
-    @Column
-    String userName;
+    private long id;
 
-    public void rateRestaurant(Restaurant restaurant) {
+    private String userName;
+    private String city;
+    private String state;
+    private double zipCode;
+    private boolean peanutAllergy;
+    private boolean eggAllergy;
+    private boolean dairyAllergy;
 
-    }
+
+
 }

@@ -20,8 +20,8 @@ public class Restaurant {
     private String line1;
     private String city;
     private String state;
-    private String zipCode;
-    private Integer phoneNumber;
+    private double zipCode;
+    private double phoneNumber;
     // We will need to use Integer.toString()
     private double reviewAvgScore;
     private double peanutScore;
