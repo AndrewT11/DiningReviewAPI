@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 
 // Believe we will need to create an enum class for 1-5 choices, as it needs to be limited.
+// asked to include Spring Data JPA notations. But this isn't the Repository
 @Entity
 @Getter
 @Setter
