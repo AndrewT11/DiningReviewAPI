@@ -12,20 +12,16 @@ import lombok.AllArgsConstructor;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class Review {
     @Id
     @GeneratedValue
     private Long id;
     private String userName;
     private long restaurantId;
-    private String peanutScore = null;
-    private String eggScore = null;
-    private String dairyScore = null;
+    private Double peanutScore = null;
+    private Double eggScore = null;
+    private Double dairyScore = null;
 
     private String comment = null;
-
-    public Review(String userName, long restaurantId) {
-        this.userName = userName;
-        this.restaurantId = restaurantId;
-    }
 }
