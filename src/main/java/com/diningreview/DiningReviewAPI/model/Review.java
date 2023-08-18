@@ -25,4 +25,6 @@ public class Review {
     private Double dairyScore = null;
 
     private String comment = null;
+
+    private ReviewStatus status;
 }
