@@ -6,6 +6,6 @@ import java.util.Optional;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
-public class RestaurantRepository extends CrudRepository<Restaurant, long>{
+public interface RestaurantRepository extends CrudRepository<Restaurant, Long>{
 
 }

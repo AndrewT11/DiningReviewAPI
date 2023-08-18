@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class UserRepository extends CrudRepository<User, long> {
-
+public interface UserRepository extends CrudRepository<User, Long> {
+    Optional<User> findUserByUserName(String userName);
 }

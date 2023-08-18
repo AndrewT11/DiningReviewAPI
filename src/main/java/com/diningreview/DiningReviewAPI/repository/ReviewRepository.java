@@ -5,6 +5,6 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-public class ReviewRepository extends CrudRepository<Review, long> {
+public interface ReviewRepository extends CrudRepository<Review, Long> {
 
 }
