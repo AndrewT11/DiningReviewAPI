@@ -30,6 +30,7 @@ public class UserController {
         userRepository.save(user);
     }
 
+    // Edit user
     @PutMapping("/{userName}")
     @ResponseStatus(code = HttpStatus.RESET_CONTENT, reason = "User updated")
     public void updateUser(@PathVariable String userName, @RequestBody User updatedInfo) {
@@ -40,6 +41,19 @@ public class UserController {
             this.userRepository.save(existingUser);
         }
 
+    }
+
+    // Get User by Id
+    @GetMapping("/{userName}")
+    @ResponseStatus(code = HttpStatus.OK, reason = "Fetching user")
+    public User getUser(@PathVariable String userName) {
+        Optional<User> existingUserOptional = this.userRepository.findUserByUserName(userName);
+        if(!existingUserOptional.isPresent()) {
+            // This is how we can throw an exception
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        User existingUser = existingUserOptional.get();
+        return existingUser;
     }
 
 }
