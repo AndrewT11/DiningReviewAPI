@@ -28,4 +28,19 @@ public class ReviewController {
         this.userRepository = userRepository;
         this.restaurantRepository = restaurantRepository;
     }
+
+    // Post a review
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.ACCEPTED, reason = "Review Posted")
+    public void addReview(@RequestBody Review review) {
+        // we need to validate review and use optional again
+
+        Optional<Restaurant> optionalRestaurant = this.restaurantRepository.findById(review.getRestaurantId());
+        if(optionalRestaurant.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
+        review.setStatus(ReviewStatus.PENDING);
+        this.reviewRepository.save(review);
+    }
 }
