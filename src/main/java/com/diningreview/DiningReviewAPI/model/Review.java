@@ -18,13 +18,14 @@ public class Review {
     @Id
     @GeneratedValue
     private Long id;
+
     private String userName;
     private Long restaurantId;
+    private String review;
+
     private Double peanutScore;
     private Double eggScore;
     private Double dairyScore;
-
-    private String review;
 
     private ReviewStatus status;
 }
