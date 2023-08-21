@@ -19,12 +19,12 @@ public class Review {
     @GeneratedValue
     private Long id;
     private String userName;
-    private long restaurantId;
-    private Double peanutScore = null;
-    private Double eggScore = null;
-    private Double dairyScore = null;
+    private Long restaurantId;
+    private Double peanutScore;
+    private Double eggScore;
+    private Double dairyScore;
 
-    private String comment = null;
+    private String review;
 
     private ReviewStatus status;
 }
