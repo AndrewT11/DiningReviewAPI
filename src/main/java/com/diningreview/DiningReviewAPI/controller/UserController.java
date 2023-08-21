@@ -85,7 +85,7 @@ public class UserController {
     @ResponseStatus(code = HttpStatus.OK, reason = "Fetching user")
     public User getUser(@PathVariable String userName) {
         Optional<User> existingUserOptional = this.userRepository.findUserByUserName(userName);
-        if(!existingUserOptional.isPresent()) {
+        if(existingUserOptional.isEmpty()) {
             // This is how we can throw an exception
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
