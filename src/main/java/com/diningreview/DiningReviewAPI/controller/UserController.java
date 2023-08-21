@@ -8,6 +8,7 @@ import com.diningreview.DiningReviewAPI.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.util.ObjectUtils;
 
 
 
@@ -27,6 +28,9 @@ public class UserController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED, reason = "User created")
     public void addUser(@RequestBody User user) {
+        // Used to check if the userName already exists. If so, throw ResponseStatus
+        validateUser(user);
+        // if not exist, save the new user to the repository.
         userRepository.save(user);
     }
 
@@ -56,4 +60,21 @@ public class UserController {
         return existingUser;
     }
 
+    private void validateUser(User user) {
+        // Test if an object is empty or null. Returns true i object has a supported type and is empty or null. Thus, we check here if the username is actually valid.
+        validateUserName(user.getUserName());
+
+        // Optionals are intended to be used as a return type. Without optionals, your method has a possibility of returning null. We can use optionals as method parameter. Helps you avoid null pointer exceptions. We will be using this in addUser to see if there is already a user with this name.Each name must be unique.
+        Optional<User> existingUser = userRepository.findUserByUserName(user.getUserName());
+        if (existingUser.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT);
+        }
+    }
+    // Checks if any value in the given array is not null. If all the values are null or the array is null or empty then false is returned. Otherwise, true.
+    //.isEmpty() tests if an Object is empty or null.
+    private void validateUserName(String userName) {
+        if(ObjectUtils.isEmpty(userName)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
