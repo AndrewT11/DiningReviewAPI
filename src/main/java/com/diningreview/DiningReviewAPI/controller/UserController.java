@@ -84,6 +84,8 @@ public class UserController {
     @GetMapping("/{userName}")
     @ResponseStatus(code = HttpStatus.OK, reason = "Fetching user")
     public User getUser(@PathVariable String userName) {
+        validateUserName(userName);
+
         Optional<User> existingUserOptional = this.userRepository.findUserByUserName(userName);
         if(existingUserOptional.isEmpty()) {
             // This is how we can throw an exception
