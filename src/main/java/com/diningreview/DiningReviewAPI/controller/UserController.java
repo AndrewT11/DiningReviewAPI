@@ -36,13 +36,46 @@ public class UserController {
 
     // Edit user
     @PutMapping("/{userName}")
-    @ResponseStatus(code = HttpStatus.RESET_CONTENT, reason = "User updated")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "User updated")
     public void updateUser(@PathVariable String userName, @RequestBody User updatedInfo) {
+
+        validateUserName(userName);
         // Validate user exists
         Optional<User> existingUserOptional = this.userRepository.findUserByUserName(userName);
         if(existingUserOptional.isPresent()) {
             User existingUser = existingUserOptional.get();
+
+            copyUserInfoFrom(updatedInfo, existingUser);
             this.userRepository.save(existingUser);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    private void copyUserInfoFrom(User updatedUser, User existingUser) {
+        // there is no .isPresent() method for ObjectUtils, thus we must ! .isEmpty
+        if (!ObjectUtils.isEmpty(updatedUser.getUserName())) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
+        if (!ObjectUtils.isEmpty(updatedUser.getCity())) {
+            existingUser.setCity(updatedUser.getCity());
+        }
+        if (!ObjectUtils.isEmpty(updatedUser.getState())) {
+            existingUser.setState((updatedUser.getState()));
+        }
+        if(!ObjectUtils.isEmpty(updatedUser.getZipCode())) {
+            existingUser.setZipCode((updatedUser.getZipCode()));
+        }
+        if(!ObjectUtils.isEmpty(updatedUser.isPeanutAllergy())) {
+            existingUser.setPeanutAllergy(updatedUser.isPeanutAllergy());
+        }
+        if(!ObjectUtils.isEmpty(updatedUser.isDairyAllergy())) {
+            existingUser.setDairyAllergy(updatedUser.isDairyAllergy());
+        }
+        if(!ObjectUtils.isEmpty(updatedUser.isEggAllergy())) {
+            existingUser.setEggAllergy(updatedUser.isEggAllergy());
         }
 
     }
