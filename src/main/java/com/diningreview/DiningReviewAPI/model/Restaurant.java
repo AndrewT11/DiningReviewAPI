@@ -16,12 +16,16 @@ public class Restaurant {
     @Id
     @GeneratedValue
     private Long id;
+
     private String name;
+
     private String line1;
     private String city;
     private String state;
     private double zipCode;
+
     private double phoneNumber;
+    private String website;
     // We will need to use Integer.toString()
     private double reviewAvgScore;
     private double peanutScore;
