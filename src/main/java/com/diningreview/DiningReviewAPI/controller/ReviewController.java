@@ -60,5 +60,11 @@ public class ReviewController {
             && ObjectUtils.isEmpty(review.getDairyScore())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+
+        //After checking to see if all fields of review are good, we check the userName itself.
+        Optional<User> optionalUser = this.userRepository.findUserByUserName(review.getUserName());
+        if(optionalUser.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+        }
     }
 }
