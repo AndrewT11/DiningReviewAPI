@@ -7,5 +7,5 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RestaurantRepository extends CrudRepository<Restaurant, Long>{
-
+    Optional<Restaurant> findRestaurantByNameAndZipCode(String name, Double zipCode);
 }
