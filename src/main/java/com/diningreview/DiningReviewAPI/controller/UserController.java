@@ -105,7 +105,7 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
     }
-    // Checks if any value in the given array is not null. If all the values are null or the array is null or empty then false is returned. Otherwise, true.
+    // Checks if any value in the given object is not null. If all the values are null or the object is null or empty then false is returned. Otherwise, true.
     //.isEmpty() tests if an Object is empty or null.
     private void validateUserName(String userName) {
         if(ObjectUtils.isEmpty(userName)) {

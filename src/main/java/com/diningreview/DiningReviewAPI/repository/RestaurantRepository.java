@@ -14,4 +14,6 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Long>{
     List<Restaurant> findRestaurantByZipCodeAndEggScoreDesc(double zipCode);
     
     List<Restaurant> findRestantByZipCodeAndDairyScoreDesc(double zipCode);
+
+    // List<Restaurant> findRestaurantById(Long id) is not needed as it is a query included with CrudRepository
 }
