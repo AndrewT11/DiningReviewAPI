@@ -1,12 +1,5 @@
-com\diningreview\DiningReviewAPI\model\ReviewStatus.class
-com\diningreview\DiningReviewAPI\model\Rating.class
-com\diningreview\DiningReviewAPI\repository\UserRepository.class
-com\diningreview\DiningReviewAPI\model\AdminReview.class
-com\diningreview\DiningReviewAPI\model\Review.class
-com\diningreview\DiningReviewAPI\model\User.class
-com\diningreview\DiningReviewAPI\controller\RestaurantController.class
-com\diningreview\DiningReviewAPI\controller\UserController.class
-com\diningreview\DiningReviewAPI\repository\ReviewRepository.class
 com\diningreview\DiningReviewAPI\model\Restaurant.class
 com\diningreview\DiningReviewAPI\repository\RestaurantRepository.class
-com\diningreview\DiningReviewAPI\DiningReviewApiApplication.class
+com\diningreview\DiningReviewAPI\repository\UserRepository.class
+com\diningreview\DiningReviewAPI\controller\UserController.class
+com\diningreview\DiningReviewAPI\model\User.class
