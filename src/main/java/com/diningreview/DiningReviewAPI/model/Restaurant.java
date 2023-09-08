@@ -1,7 +1,7 @@
 package com.diningreview.DiningReviewAPI.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+
 import lombok.Setter;
 
 import javax.persistence.GeneratedValue;
