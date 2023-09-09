@@ -29,5 +29,7 @@ public class DiningReview {
     private Integer dairyScore;
     @Column
     private String review;
+    @Column
+    private ReviewStatus status;
 
 }
