@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/restaurants")
 public class RestaurantController {
     RestaurantRepository restaurantRepository;
 
@@ -15,11 +17,14 @@ public class RestaurantController {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public Restaurant addRestaurant(String name, String zipCode) {
-        Optional<Restaurant> restaurantOptional = this.restaurantRepository.getRestaurantByNameAndZipCode(name, zipCode);
+    @PostMapping("/")
+    public Restaurant addRestaurant(Restaurant restaurant) {
+        Optional<Restaurant> restaurantOptional = this.restaurantRepository.getRestaurantByNameAndZipCode(restaurant.getName(), restaurant.getZipCode());
         if(restaurantOptional.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Restaurant by name and zipcode already exists")
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Restaurant by name and zipcode already exists");
         }
+        return restaurant;
     }
+
 
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
+
+
 public interface RestaurantRepository extends CrudRepository<Restaurant, Integer> {
     ArrayList<Restaurant> findRestaurantByZipCodeAndPeanutScoreNotNullOrderByPeanutScoreDesc(String zipCode);
     ArrayList<Restaurant> findRestaurantByZipCodeAndEggScoreNotNullOrderEggScoreDesc(String zipCode);
