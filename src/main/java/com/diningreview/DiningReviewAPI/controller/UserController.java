@@ -71,9 +71,4 @@ public class UserController {
             return userExists;
         }
     }
-
-    // look back at this
-    public void validateUser(User user) {
-
-    }
 }

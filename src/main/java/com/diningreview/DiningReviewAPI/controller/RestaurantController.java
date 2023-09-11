@@ -35,4 +35,19 @@ public class RestaurantController {
         Restaurant restaurant = restaurantOptional.get();
         return restaurant;
     }
+
+    @GetMapping("/search")
+    public ArrayList<Restaurant> getRestaurantsByZipCodeAndAllergyScore(@RequestParam String zipCode, @RequestParam String allergy) {
+
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        if(allergy.equalsIgnoreCase("peanut")) {
+            restaurants = this.restaurantRepository.findRestaurantByZipCodeAndPeanutScoreNotNullOrderByPeanutScoreDesc(zipCode);
+        } else if (allergy.equalsIgnoreCase("dairy")) {
+            restaurants= this.restaurantRepository.findRestaurantByZipCodeAndDairyScoreNotNullOrderDairyScoreDesc(zipCode);
+        } else if (allergy.equalsIgnoreCase("egg")) {
+            restaurants = this.restaurantRepository.findRestaurantByZipCodeAndEggScoreNotNullOrderEggScoreDesc(zipCode);
+        }
+
+        return restaurants;
+    }
 }
