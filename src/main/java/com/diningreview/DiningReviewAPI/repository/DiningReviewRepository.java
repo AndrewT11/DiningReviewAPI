@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.ArrayList;
 
 public interface DiningReviewRepository extends CrudRepository<DiningReviewRepository, Integer> {
-    ArrayList<DiningReview>  findDiningReviewBy
+    ArrayList<DiningReview>  findDiningReviewByStatus(ReviewStatus reviewStatus);
 }
