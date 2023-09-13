@@ -64,7 +64,7 @@ public class UserController {
     @GetMapping("/{userName}")
     public User getUser(@PathVariable("userName") String userName) {
         Optional<User> userOptional = this.userRepository.getUserByUserName(userName);
-        if(!userOptional.isPresent()) {
+        if(userOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist");
         } else {
             User userExists = userOptional.get();

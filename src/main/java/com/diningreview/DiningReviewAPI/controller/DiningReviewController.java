@@ -17,12 +17,14 @@ public class DiningReviewController {
 
     private final RestaurantRepository restaurantRepository;
 
+
     public DiningReviewController(DiningReviewRepository diningReviewRepository, UserRepository userRepository, RestaurantRepository restaurantRepository) {
         this.diningReviewRepository = diningReviewRepository;
         this.userRepository = userRepository;
         this.restaurantRepository = restaurantRepository;
     }
 
+    @PostMapping("/'")
     public void addDiningReview(@RequestBody DiningReview diningReview) {
 
     }

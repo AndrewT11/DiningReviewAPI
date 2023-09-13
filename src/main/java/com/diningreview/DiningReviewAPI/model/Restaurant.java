@@ -21,15 +21,7 @@ public class Restaurant {
     @Column
     private String name;
     @Column
-    private String streetAddress;
-    @Column
-    private String city;
-    @Column
-    private String state;
-    @Column
     private String zipCode;
-    @Column
-    private String phoneNumber;
     @Column
     private Float reviewScore;
     @Column
